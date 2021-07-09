@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "name": "ebpf-linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/libbpf/include/linux",
+                "${workspaceFolder}/libbpf/include/uapi",
+                "${workspaceFolder}/libbpf/src",
+                // "/linux/include/uapi/linux",
+                "/usr/src/linux-headers-5.4.0-66/include"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-arm64"
+        }
+    ],
+    "version": 4
+}
