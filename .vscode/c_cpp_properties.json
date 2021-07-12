@@ -1,14 +1,9 @@
 {
     "configurations": [
         {
-            "name": "ebpf-linux",
+            "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/libbpf/include/linux",
-                "${workspaceFolder}/libbpf/include/uapi",
-                "${workspaceFolder}/libbpf/src",
-                // "/linux/include/uapi/linux",
-                "/usr/src/linux-headers-5.4.0-66/include"
+                "${workspaceFolder}/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

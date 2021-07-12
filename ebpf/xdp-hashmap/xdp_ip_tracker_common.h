@@ -1,5 +1,6 @@
 #ifndef XDP_IP_TACKER_COMMON_H
 #define XDP_IP_TACKER_COMMON_H
+#include <asm/types.h>
 
 struct pair
 {

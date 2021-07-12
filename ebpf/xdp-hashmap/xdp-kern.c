@@ -1,16 +1,17 @@
-#define KBUILD_MODNAME "foo"
 #include "bpf_endian.h"
 #include "bpf_helpers.h"
 #include "xdp_ip_tracker_common.h"
+#include <asm/types.h>
+#include <linux/if_ether.h>
+#include <linux/if_packet.h>
+#include <linux/if_vlan.h>
+#include <linux/in.h>
+#include <linux/ip.h>
+#include <linux/tcp.h>
+#include <linux/udp.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <uapi/linux/bpf.h>
-#include <uapi/linux/if_ether.h>
-#include <uapi/linux/if_packet.h>
-#include <uapi/linux/if_vlan.h>
-#include <uapi/linux/in.h>
-#include <uapi/linux/ip.h>
-#include <uapi/linux/tcp.h>
-#include <uapi/linux/udp.h>
 
 #define bpf_printk(fmt, ...)                           \
     (                                                  \

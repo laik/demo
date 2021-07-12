@@ -1,9 +1,7 @@
-#include "bpf_load.h"
-#include "bpf_util.h"
 #include "xdp_ip_tracker_common.h"
 #include <arpa/inet.h>
+#include <asm/types.h>
 #include <assert.h>
-#include <bpf/bpf.h>
 #include <errno.h>
 #include <linux/bpf.h>
 #include <linux/if_link.h>
@@ -27,11 +25,13 @@ static void int_exit(int sig)
     exit(0);
 }
 
+static char *filename = "xdp-kern.o";
+
 // An XDP program which track packets with IP address
 // Usage: ./xdp_ip_tracker
 int main(int argc, char **argv)
 {
-    char *filename = "xdp_ip_tracker_kern.o";
+    // char *filename = "xdp_ip_tracker_kern.o";
     // change limits
     struct rlimit r = {RLIM_INFINITY, RLIM_INFINITY};
     if (setrlimit(RLIMIT_MEMLOCK, &r))
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     // load the kernel bpf object file
     if (load_bpf_file(filename))
     {
-        printf("error - bpf_log_buf: %s", bpf_log_buf);
+        printf("error - bpf_log_buf: %s", "");
         return 1;
     }
 
