@@ -33,6 +33,11 @@
         "udp.h": "c",
         "stdlib.h": "c",
         "resource.h": "c",
-        "types.h": "c"
+        "types.h": "c",
+        "stdbool.h": "c",
+        "in6.h": "c",
+        "string.h": "c",
+        "stdio.h": "c",
+        "features.h": "c"
     }
 }

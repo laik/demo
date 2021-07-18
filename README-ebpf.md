@@ -86,9 +86,9 @@ Generic XDP(XDP_FLAGS_SKB_MODE)：对于没有实现native或offloaded模式的X
 ip link set dev [device name] xdp obj xdp-drop-world.o sec [section name]
 
 例如：虚拟机里 eth0是虚拟virtio_net
-ip link set eth0 docker0 xdpgeneric xdp-drop-world.o sec xdp
+ip link set dev eth0 xdpgeneric obj xdp-drop-world.o sec xdp
 
-ip link set eth0 xdp off
+ip link set dev eth0 xdpgeneric off
 
 
 
@@ -119,7 +119,6 @@ bpftool batch file /tmp/hashmap.txt
 ```
 ## xdp附加
 bpftool net show 
-
 
 ## perf 
 bpftool perf show
