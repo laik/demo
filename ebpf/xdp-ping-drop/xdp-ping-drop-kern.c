@@ -3,8 +3,8 @@
 #include <linux/if_ether.h>
 #include <linux/if_packet.h>
 #include <linux/ip.h>
-#include "bpf_endian.h"
-#include "bpf_helpers.h"
+// #include "bpf_endian.h"
+// #include "bpf_helpers.h"
 
 struct bpf_map_def SEC("maps") ip_maps = {
     .type = BPF_MAP_TYPE_HASH,

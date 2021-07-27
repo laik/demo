@@ -16,6 +16,8 @@ int _xdp_tcp_track(struct xdp_md *ctx)
     void *data = (void *)(long)ctx->data;
 
     // bpf_printk("recv data_end %d data %d\r\n", (long)data_end, (long)data);
+    char msg[] = "xx";
+    bpf_trace_printk(msg, sizeof(msg));
     return XDP_PASS;
 }
 
