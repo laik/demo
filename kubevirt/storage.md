@@ -2,14 +2,23 @@
 在 spec.volumes 下可以指定多种类型的卷：
 
 cloudInitConfigDrive：【使用】在KubeVirt中使用 Cloud-init 中已经介绍
+
 cloudInitNoCloud：【使用】在KubeVirt中使用 Cloud-init 中已经介绍
+
 containerDisk：指定一个包含 qcow2 或 raw 格式的 docker 镜像，重启 vm 数据会丢失
+
 dataVolume：动态创建一个 PVC，并用指定的磁盘映像填充该 PVC，重启 vm 数据不会丢失
+
 downwardAPI：不清楚用途。。
+
 emptyDisk：从宿主机上分配固定容量的空间，映射到vm中的一块磁盘，与 emptyDir 一样，emptyDisk 的生命周期与 vm 等同，重启 mv 数据会丢失
+
 ephemeral：在虚机启动时创建一个临时卷，虚机关闭后自动销毁，临时卷在不需要磁盘持久性的任何情况下都很有用。
+
 hostDisk：在宿主机上创建一个 img 镜像文件，挂给虚拟机使用。重启 vm 数据不会丢失。
+
 persistentVolumeClaim：指定一个 PVC 创建一个块设备。重启 vm 数据不会丢失。
+
 secret：使用 K8S 的 secret 来存储和管理一些敏感数据，比如密码，token，密钥等敏感信息。并把这些信息注入给虚拟机，如果是可以动态更新到 Pod，但是不能修改 Pod 中生成的 iso 文件，更不能更新到 vm。要想更新，只有重启 vm。emptyDisk
 
 在 yaml 中指定如下相关内容
@@ -51,8 +60,8 @@ Bash
 重启虚拟机，再次挂载，查看文件是否存在？结果是挂载不了，没有格式化，说明数据被清空了
 
 $ kubectl virt  stop test-vm
-$  kubectl virt  start test-vm
-$  kubectl virt  console test-vm
+$ kubectl virt  start test-vm
+$ kubectl virt  console test-vm
 $ mount /dev/vdc /mnt
 [  349.509706] SGI XFS with ACLs, security attributes, no debug enabled
 mount: /dev/vdc is write-protected, mounting read-only

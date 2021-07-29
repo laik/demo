@@ -1,0 +1,15 @@
+apiVersion: cdi.kubevirt.io/v1alpha1
+kind: DataVolume
+metadata:
+  name: cirros
+  namespace: vm-images
+spec:
+  source:
+    registry:
+      url: "docker://laiks/cirros:latest"
+  pvc:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi

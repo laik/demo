@@ -9,9 +9,13 @@ kubectl client utility
 ```
 ps -ef | grep api | grep allow-privileged=true
 
-// 检查cpu支不支持libvirt 
+// 检查cpu支不支持libvirt ,如果不支持虚拟化，那么可以开启软件模拟
 # grep -Eoc '(vmx|svm)' /proc/cpuinfo
 ```
+
+
+debian机器安装kvm
+sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils libguestfs-tools genisoimage virtinst libosinfo-bin
 
 检查libvirt 
 
@@ -33,7 +37,7 @@ $ virt-host-validate qemu
 
 ```
 # Pick an upstream version of KubeVirt to install
-$ export RELEASE=v0.35.0
+$ export RELEASE=v0.43.0
 # Deploy the KubeVirt operator
 $ kubectl apply -f https://github.com/kubevirt/kubevirt/releases/download/${RELEASE}/kubevirt-operator.yaml
 # Create the KubeVirt CR (instance deployment request) which triggers the actual installation
@@ -54,7 +58,6 @@ Add the following to the kubevirt.yaml file
       configuration:
         developerConfiguration:
           useEmulation: true
-
 ```
 
 通过标签限定daemonset运行（ 是否可以限定只发布的节点,待测试)

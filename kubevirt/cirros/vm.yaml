@@ -1,0 +1,56 @@
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: cirros-nginx
+  name: cirros-nginx
+  namespace: vm-images
+spec:
+  runStrategy: "RerunOnFailure"
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: cirros-nginx
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumedisk1
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 1Gi
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - dataVolume:
+          name: cirros
+        name: datavolumedisk1
+      - cloudInitNoCloud:
+          userData: |
+            #!/bin/sh
+            yum install -y nginx
+            systemctl enable nginx
+            # removing instances ensures cloud init will execute again after reboot
+            rm -rf /var/lib/cloud/instances
+            shutdown now
+        name: cloudinitdisk
+  dataVolumeTemplates:
+  - metadata:
+      name: cirros
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+      source:
+        pvc:
+          namespace: vm-images
+          name: cirros
