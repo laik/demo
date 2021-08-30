@@ -17,10 +17,10 @@ static char *filename = "xdp-count-tcp-kern.o";
 int main(int argc, char **argv)
 {
     // load the kernel bpf object file
-    // if (load_bpf_file(filename))
-    // {
-    printf("error - bpf_log_buf: %s", filename);
-    //     return 1;
-    // }
+    if (load_bpf_file(filename))
+    {
+        printf("error - bpf_log_buf: %s", filename);
+        return 1;
+    }
     return 0;
 }

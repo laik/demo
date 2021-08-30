@@ -1,6 +1,9 @@
 # 安装cdi 
 不需要什么技术含量，直接apply operator/cr就可以了
 
+kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/v1.37.1/cdi-operator.yaml
+kubectl create -f https://github.com/kubevirt/containerized-data-importer/releases/download/v1.37.1/cdi-cr.yaml
+
 # 不建议使用这种上传代理的方式，有个bug
 virtctl image-upload dv fedora-cloud-base --namespace vm-images  --size=5Gi --image-path Fedora-Cloud-Base-34-1.2.x86_64.qcow2  --uploadproxy-url=https://127.0.0.1:18443 --insecure
 
