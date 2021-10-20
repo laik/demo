@@ -1,4 +1,5 @@
 #include <linux/bpf.h>
+#include <uapi/linux/bpf.h>
 #include <stdio.h>
 
 static int ifindex = 2; // target network interface to attach, you can find it via `ip a`

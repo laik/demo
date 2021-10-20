@@ -14,7 +14,7 @@
 
 #define STR(x) sprintf("%s", x)
 
-int main(int *argv, char **args)
+int main(int argc, char **args)
 {
     __u32 abc = 1;
     printf("%d\r\n", abc);
@@ -29,9 +29,10 @@ int main(int *argv, char **args)
 
     msg(A);
 
-    for (int i = 0; i < argv; i++)
+    for (int i = 0; i < argc; i++)
     {
         // printf("index %d - value = %c", i, STR(args[i]));
+        printf("index %d,args %s", i, args[i]);
     }
 
     return 0;

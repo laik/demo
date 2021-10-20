@@ -1,2 +1,2 @@
 default:
-	clang -O2 -target bpf -c xdp-drop-world.c -o xdp-drop-world.o
+	clang -O2 -target bpf -c xdp-drop-world-kern.c -o xdp-drop-world-kern.o

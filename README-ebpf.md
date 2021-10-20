@@ -128,4 +128,5 @@ bpftool cgroup tree
 
 ```
 
-
+# bpf_track_print
+cat  /sys/kernel/debug/tracing/trace_pipe
